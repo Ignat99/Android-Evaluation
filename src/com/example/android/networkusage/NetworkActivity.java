@@ -1,4 +1,4 @@
-/**
+/*
  * This class parses XML feeds from Yahoo Weather. It is a modified version the
  * code found at the following url courtesy of the Android developer's blog.
  * http://developer.android.com/training/basics/network-ops/managing.html
@@ -56,7 +56,9 @@ public class NetworkActivity extends Activity {
 	public static final String WIFI = "Wi-Fi";
 	public static final String ANY = "Any";
 //	private static final String URL = "http://weather.yahooapis.com/forecastrss?w=2502265";
-	private static final String URL = "http://192.168.43.198/Xj7zmwe40d7vw3SdS?mode=switch";
+	private static final String URL = "http://192.168.4.1/relay.html?press_btn=on";
+	private static final String URL_off = "http://192.168.4.1/relay.html?press_btn=off";
+
 
 	// Whether there is a Wi-Fi connection.
 	private static boolean wifiConnected = false;
@@ -109,7 +111,7 @@ public class NetworkActivity extends Activity {
 		// of
 		// an error page instead of stackoverflow.com content.
 		if (refreshDisplay) {
-			loadPage();
+			loadPage1();
 		}
 
 	}
@@ -151,6 +153,18 @@ public class NetworkActivity extends Activity {
 			//showErrorPage();
 		//}
 	}
+
+	private void loadPage1() {
+		//if (((sPref.equals(ANY)) && (wifiConnected || mobileConnected))
+			//	|| ((sPref.equals(WIFI)) && (wifiConnected))) {
+			// AsyncTask subclass
+			new DownloadXmlTask().execute(URL_off);
+		//} else {
+			//showErrorPage();
+		//}
+	}
+
+
 
 	// Uses AsyncTask subclass to download the XML feed from Yahoo weather.
 	// This avoids UI lock up. To prevent network operations from
