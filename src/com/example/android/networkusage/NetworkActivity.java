@@ -55,7 +55,8 @@ import com.example.android.networkusage.YahooWeatherXmlParser.Entry;
 public class NetworkActivity extends Activity {
 	public static final String WIFI = "Wi-Fi";
 	public static final String ANY = "Any";
-	private static final String URL = "http://weather.yahooapis.com/forecastrss?w=2502265";
+//	private static final String URL = "http://weather.yahooapis.com/forecastrss?w=2502265";
+	private static final String URL = "http://192.168.43.198/Xj7zmwe40d7vw3SdS?mode=switch";
 
 	// Whether there is a Wi-Fi connection.
 	private static boolean wifiConnected = false;
@@ -142,13 +143,13 @@ public class NetworkActivity extends Activity {
 	// causing a delay that results in a poor user experience, always perform
 	// network operations on a separate thread from the UI.
 	private void loadPage() {
-		if (((sPref.equals(ANY)) && (wifiConnected || mobileConnected))
-				|| ((sPref.equals(WIFI)) && (wifiConnected))) {
+		//if (((sPref.equals(ANY)) && (wifiConnected || mobileConnected))
+			//	|| ((sPref.equals(WIFI)) && (wifiConnected))) {
 			// AsyncTask subclass
 			new DownloadXmlTask().execute(URL);
-		} else {
-			showErrorPage();
-		}
+		//} else {
+			//showErrorPage();
+		//}
 	}
 
 	// Uses AsyncTask subclass to download the XML feed from Yahoo weather.
@@ -156,13 +157,13 @@ public class NetworkActivity extends Activity {
 	// causing a delay that results in a poor user experience, always perform
 	// network operations on a separate thread from the UI.
 	public void loadPage(View v) {
-		if (((sPref.equals(ANY)) && (wifiConnected || mobileConnected))
-				|| ((sPref.equals(WIFI)) && (wifiConnected))) {
+	//	if (((sPref.equals(ANY)) && (wifiConnected || mobileConnected))
+		//		|| ((sPref.equals(WIFI)) && (wifiConnected))) {
 			// AsyncTask subclass
 			new DownloadXmlTask().execute(URL);
-		} else {
-			showErrorPage();
-		}
+		//} else {
+		//	showErrorPage();
+		//}
 	}
 
 	// Displays an error if the app is unable to load content.
